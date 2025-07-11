@@ -1,0 +1,17 @@
+apiVersion: sources.knative.v1
+kind: SinkBinding
+metadata:
+  name: node-sinkbinding
+spec:
+  subject:
+    apiVersion: apps/v1
+    kind: Deployment
+    selector:
+      matchLabels:
+        app: node-server
+  sink:
+    ref:
+      apiVersion: eventing.knative.dev/v1
+      kind: Broker
+      name: bookstore-broker
+  
